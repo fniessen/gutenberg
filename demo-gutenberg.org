@@ -1,0 +1,224 @@
+#+TITLE:     Literate programming avec Org mode
+#+AUTHOR:    Fabrice Niessen
+#+EMAIL:     booster.emacs@gmail.com
+#+DESCRIPTION: Fichier de démo pour la conférence GUTenberg 2021
+#+KEYWORDS:  gutenberg, emacs, org-mode, latex, booster
+#+LANGUAGE:  fr
+#+OPTIONS:   H:4 num:t toc:nil
+
+#+LATEX_CLASS: report
+#+LaTeX: \input{fichier-config-listings}
+#+PROPERTY:  header-args :eval always
+# #+SETUPFILE: ~/org/theme-bigblow.setup
+
+* Documentation logicielle                                    :noexport:ARCHIVE:
+
+La « *programmation litéraire* » (ou /literate programming/, de Knuth) consiste
+à écrire la documentation sur le code source (dans l'ordre requis par la
+logique) en même temps et en un même lieu que le code.
+
+- Tangle :: *Extraire* les blocs de code source et générer le code « emmêlé »,
+  formaté pour la machine (pour compilation ou exécution ultérieure)
+
+  Possibilité de changer l'ordre du code source, via l'argument Noweb.
+
+- Weave :: *Exporter* le fichier Org en entier comme documentation « tissée »,
+  formatée pour l'homme (généralement en LaTeX ou en HTML)
+
+** Exporter le document Org
+
+- C-c C-e
+- Répéter la dernière commande d'export avec C-u C-c C-e
+
+* Exemple de fichier LaTeX                                    :noexport:ARCHIVE:
+
+#+begin_src latex :exports code
+% Document de classe yathesis
+\documentclass{yathesis}
+%
+% Chargement manuel de packages (pas chargés par la classe yathesis)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage[nospace]{varioref}
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Début du document
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Caractéristiques du document
+%
+% Préparation des pages de couverture et de titre
+\author[]{}{}
+\title[]{}
+\date{}{}{}
+%
+% Production des pages de couverture et de titre
+\maketitle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Début de la partie liminaire de la thèse
+%
+% l'environnement « abstract »)
+\begin{abstract}
+% ...
+\end{abstract}
+%
+% Production de la page de résumés
+\makeabstract
+
+% (Facultatif) Chapitre de remerciements
+\chapter{Remerciements}
+#+end_src
+
+** Tangle des blocs de code source
+
+Générer le code « emmêlé » :
+
+#+begin_src latex :tangle exemple.sty :exports code :noweb yes
+#+end_src
+
+* Exécution de code (via Org Babel)                           :noexport:ARCHIVE:
+
+Voici un bout de code qui ajoute 2, puis multiplie par 2 :
+
+#+name: plus-2-fois-2
+#+begin_src python :var x=13 :exports both
+resultat = x + 2
+resultat = resultat * 2
+return resultat
+#+end_src
+
+Voici un autre bout de code qui multiplie par 3, mais dont seul le résultat
+m'intéresse :
+
+#+name: fois-3
+#+begin_src emacs-lisp :exports results :var x=plus-2-fois-2
+(* 3 x)
+#+end_src
+
+* Introduction
+
+Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi
+ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae
+audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo
+pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire
+latenter intromissi per posticas in regiam nuntiabant, id observantes
+conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius,
+laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum
+inpendentium exprimebat.
+
+* Équipements et tests
+
+Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis
+confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam
+inductus est ut appellant Christiani diaconus.
+
+** Équipements utilisés
+
+Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur,
+Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque
+lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus
+minutis, quam mediam navigabile flumen Calycadnus interscindit :
+
+- ibi victu recreati et quiete,
+- postquam abierat timor,
+- vicos opulentos adorti equestrium adventu cohortium,
+- quae casu propinquabant.
+
+** Conditions de tests
+
+Itaque tum Scaevola cum in eam ipsam mentionem incidisset, exposuit nobis
+sermonem Laeli de amicitia habitum ab illo secum et cum altero genero, C. Fannio
+Marci filio, paucis diebus post mortem Africani :
+
+1. inter quos Paulus eminebat notarius ortus in Hispania,
+2. glabro quidam sub vultu latens,
+3. odorandi vias periculorum occultas perquam sagax.
+
+* Résultats et discussion
+
+Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio
+pro consule missae sub iugum factae sunt vectigales.
+
+#+name: tableau
+| Jour     | Frais |
+|----------+-------|
+| Lundi    |     8 |
+| Mardi    |     5 |
+| Mercredi |     2 |
+| Jeudi    |     2 |
+| Vendredi |     3 |
+| Samedi   |     1 |
+| Dimanche |     0 |
+|----------+-------|
+| Total    |    21 |
+#+TBLFM: @9$2=vsum(@I..@-I)
+
+Quid?
+
+** Résultats
+
+Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos
+sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices
+venerint summos.
+
+** Discussion
+
+Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati
+ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque
+Spoletium pergunt.
+
+* Conclusions
+
+Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum
+delatae dignitatis sese efferens insolenter, vir quidem prudens et forensium
+negotiorum oppido gnarus, sed splendore liberalium doctrinarum minus quam
+nobilem decuerat institutus, quo administrante seditiones sunt concitatae graves
+ob inopiam vini:
+
+| /Sous-total/    |         21.00 | \EUR |
+|---------------+---------------+---|
+| /Taxe @ 21%/    |          4.41 | \EUR |
+|---------------+---------------+---|
+| *Montant total* | *\large{25.41}* | *\EUR* |
+#+TBLFM: @1$2=vsum(remote(tableau,@>$>));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*\large{%.2f}*
+
+Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
+
+* Annexes
+
+#+begin_src emacs-lisp :exports code
+(setq org-latex-classes
+
+      '(("article" "\\documentclass[11pt]{article}"
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}")
+         ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+
+        ("report" "\\documentclass[11pt]{report}"
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}"))
+
+        ("book" "\\documentclass[11pt]{book}"
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
+#+end_src
+
+* Follow Me!
+
+- Groupe Facebook « *Booster Emacs* » \\
+  https://www.facebook.com/groups/286810496172489
+
+- Chaîne Youtube « *Booster Emacs* » \\
+  https://www.youtube.com/channel/UChSzlv1RJWFbb7XkV7OREtA?sub_confirmation=1

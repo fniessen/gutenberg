@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Literate programming avec Org mode</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Fabrice Niessen" />
+<meta name="description" content="Fichier de démo pour la conférence GUTenberg 2021"
+ />
+<meta name="keywords" content="gutenberg, emacs, org-mode, latex, booster" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Literate programming avec Org mode</h1>
+
+<div id="outline-container-org4ba64f2" class="outline-2">
+<h2 id="org4ba64f2"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi
+ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae
+audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo
+pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire
+latenter intromissi per posticas in regiam nuntiabant, id observantes
+conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius,
+laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum
+inpendentium exprimebat.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgee0c33a" class="outline-2">
+<h2 id="orgee0c33a"><span class="section-number-2">2</span> Équipements et tests</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis
+confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam
+inductus est ut appellant Christiani diaconus.
+</p>
+</div>
+
+<div id="outline-container-orgf059a1f" class="outline-3">
+<h3 id="orgf059a1f"><span class="section-number-3">2.1</span> Équipements utilisés</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur,
+Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque
+lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus
+minutis, quam mediam navigabile flumen Calycadnus interscindit :
+</p>
+
+<ul class="org-ul">
+<li>ibi victu recreati et quiete,</li>
+<li>postquam abierat timor,</li>
+<li>vicos opulentos adorti equestrium adventu cohortium,</li>
+<li>quae casu propinquabant.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org558a8bf" class="outline-3">
+<h3 id="org558a8bf"><span class="section-number-3">2.2</span> Conditions de tests</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Itaque tum Scaevola cum in eam ipsam mentionem incidisset, exposuit nobis
+sermonem Laeli de amicitia habitum ab illo secum et cum altero genero, C. Fannio
+Marci filio, paucis diebus post mortem Africani :
+</p>
+
+<ol class="org-ol">
+<li>inter quos Paulus eminebat notarius ortus in Hispania,</li>
+<li>glabro quidam sub vultu latens,</li>
+<li>odorandi vias periculorum occultas perquam sagax.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org400fc77" class="outline-2">
+<h2 id="org400fc77"><span class="section-number-2">3</span> Résultats et discussion</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio
+pro consule missae sub iugum factae sunt vectigales.
+</p>
+
+<table id="org889980b" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Jour</th>
+<th scope="col" class="org-right">Frais</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Lundi</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-left">Mardi</td>
+<td class="org-right">5</td>
+</tr>
+
+<tr>
+<td class="org-left">Mercredi</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">Jeudi</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">Vendredi</td>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-left">Samedi</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">Dimanche</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Total</td>
+<td class="org-right">21</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Quid?
+</p>
+</div>
+
+<div id="outline-container-org5af7262" class="outline-3">
+<h3 id="org5af7262"><span class="section-number-3">3.1</span> Résultats</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos
+sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices
+venerint summos.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org09985e6" class="outline-3">
+<h3 id="org09985e6"><span class="section-number-3">3.2</span> Discussion</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati
+ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque
+Spoletium pergunt.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org36b6376" class="outline-2">
+<h2 id="org36b6376"><span class="section-number-2">4</span> Conclusions</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum
+delatae dignitatis sese efferens insolenter, vir quidem prudens et forensium
+negotiorum oppido gnarus, sed splendore liberalium doctrinarum minus quam
+nobilem decuerat institutus, quo administrante seditiones sunt concitatae graves
+ob inopiam vini:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><i>Sous-total</i></th>
+<th scope="col" class="org-right">21.00</th>
+<th scope="col" class="org-left">&euro;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><i>Taxe @ 21%</i></td>
+<td class="org-right">4.41</td>
+<td class="org-left">&euro;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Montant total</b></td>
+<td class="org-right"><b>\large{25.41}</b></td>
+<td class="org-left"><b>&euro;</b></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4bff841" class="outline-2">
+<h2 id="org4bff841"><span class="section-number-2">5</span> Annexes</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-latex-classes
+
+      '((<span class="org-string">"article"</span> <span class="org-string">"\\documentclass[11pt]{article}"</span>
+         (<span class="org-string">"\\section{%s}"</span> . <span class="org-string">"\\section*{%s}"</span>)
+         (<span class="org-string">"\\subsection{%s}"</span> . <span class="org-string">"\\subsection*{%s}"</span>)
+         (<span class="org-string">"\\subsubsection{%s}"</span> . <span class="org-string">"\\subsubsection*{%s}"</span>)
+         (<span class="org-string">"\\paragraph{%s}"</span> . <span class="org-string">"\\paragraph*{%s}"</span>)
+         (<span class="org-string">"\\subparagraph{%s}"</span> . <span class="org-string">"\\subparagraph*{%s}"</span>))
+
+        (<span class="org-string">"report"</span> <span class="org-string">"\\documentclass[11pt]{report}"</span>
+         (<span class="org-string">"\\chapter{%s}"</span> . <span class="org-string">"\\chapter*{%s}"</span>)
+         (<span class="org-string">"\\section{%s}"</span> . <span class="org-string">"\\section*{%s}"</span>)
+         (<span class="org-string">"\\subsection{%s}"</span> . <span class="org-string">"\\subsection*{%s}"</span>)
+         (<span class="org-string">"\\subsubsection{%s}"</span> . <span class="org-string">"\\subsubsection*{%s}"</span>)
+         (<span class="org-string">"\\paragraph{%s}"</span> . <span class="org-string">"\\paragraph*{%s}"</span>))
+
+        (<span class="org-string">"book"</span> <span class="org-string">"\\documentclass[11pt]{book}"</span>
+         (<span class="org-string">"\\chapter{%s}"</span> . <span class="org-string">"\\chapter*{%s}"</span>)
+         (<span class="org-string">"\\section{%s}"</span> . <span class="org-string">"\\section*{%s}"</span>)
+         (<span class="org-string">"\\subsection{%s}"</span> . <span class="org-string">"\\subsection*{%s}"</span>)
+         (<span class="org-string">"\\subsubsection{%s}"</span> . <span class="org-string">"\\subsubsection*{%s}"</span>)
+         (<span class="org-string">"\\paragraph{%s}"</span> . <span class="org-string">"\\paragraph*{%s}"</span>))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org09eac78" class="outline-2">
+<h2 id="org09eac78"><span class="section-number-2">6</span> Follow Me!</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Groupe Facebook « <b>Booster Emacs</b> » <br />
+<a href="https://www.facebook.com/groups/286810496172489">https://www.facebook.com/groups/286810496172489</a></li>
+
+<li>Chaîne Youtube « <b>Booster Emacs</b> » <br />
+<a href="https://www.youtube.com/channel/UChSzlv1RJWFbb7XkV7OREtA?sub_confirmation=1">https://www.youtube.com/channel/UChSzlv1RJWFbb7XkV7OREtA?sub_confirmation=1</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Auteur: Fabrice Niessen</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

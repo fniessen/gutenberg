@@ -1,0 +1,181 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[french]{babel}
+\author{Fabrice Niessen}
+\date{\today}
+\title{Literate programming avec Org mode}
+\hypersetup{
+ pdfauthor={Fabrice Niessen},
+ pdftitle={Literate programming avec Org mode},
+ pdfkeywords={gutenberg, emacs, org-mode, latex, booster},
+ pdfsubject={Fichier de démo pour la conférence GUTenberg 2021},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={French}}
+\begin{document}
+
+\maketitle
+\input{fichier-config-listings}
+
+\chapter{Introduction}
+\label{sec:org99cf710}
+
+Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi
+ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae
+audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo
+pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire
+latenter intromissi per posticas in regiam nuntiabant, id observantes
+conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius,
+laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum
+inpendentium exprimebat.
+
+\chapter{Équipements et tests}
+\label{sec:org3eaa4a0}
+
+Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis
+confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam
+inductus est ut appellant Christiani diaconus.
+
+\section{Équipements utilisés}
+\label{sec:org2c352de}
+
+Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur,
+Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque
+lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus
+minutis, quam mediam navigabile flumen Calycadnus interscindit :
+
+\begin{itemize}
+\item ibi victu recreati et quiete,
+\item postquam abierat timor,
+\item vicos opulentos adorti equestrium adventu cohortium,
+\item quae casu propinquabant.
+\end{itemize}
+
+\section{Conditions de tests}
+\label{sec:orgd402aef}
+
+Itaque tum Scaevola cum in eam ipsam mentionem incidisset, exposuit nobis
+sermonem Laeli de amicitia habitum ab illo secum et cum altero genero, C. Fannio
+Marci filio, paucis diebus post mortem Africani :
+
+\begin{enumerate}
+\item inter quos Paulus eminebat notarius ortus in Hispania,
+\item glabro quidam sub vultu latens,
+\item odorandi vias periculorum occultas perquam sagax.
+\end{enumerate}
+
+\chapter{Résultats et discussion}
+\label{sec:org572b318}
+
+Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio
+pro consule missae sub iugum factae sunt vectigales.
+
+\begin{table}[!htbp]
+\label{tab:org0853ceb}
+\centering
+\begin{tabular}{lr}
+Jour & Frais\\
+\hline
+Lundi & 8\\
+Mardi & 5\\
+Mercredi & 2\\
+Jeudi & 2\\
+Vendredi & 3\\
+Samedi & 1\\
+Dimanche & 0\\
+\hline
+Total & 21\\
+\end{tabular}
+\end{table}
+
+Quid?
+
+\section{Résultats}
+\label{sec:org940ee06}
+
+Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos
+sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices
+venerint summos.
+
+\section{Discussion}
+\label{sec:org37943d2}
+
+Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati
+ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque
+Spoletium pergunt.
+
+\chapter{Conclusions}
+\label{sec:org6aaa631}
+
+Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum
+delatae dignitatis sese efferens insolenter, vir quidem prudens et forensium
+negotiorum oppido gnarus, sed splendore liberalium doctrinarum minus quam
+nobilem decuerat institutus, quo administrante seditiones sunt concitatae graves
+ob inopiam vini:
+
+\begin{center}
+\begin{tabular}{lrl}
+\emph{Sous-total} & 21.00 & \texteuro{}\\
+\hline
+\emph{Taxe @ 21\%} & 4.41 & \texteuro{}\\
+\hline
+\textbf{Montant total} & \textbf{\large{25.41}} & \textbf{\texteuro{}}\\
+\end{tabular}
+\end{center}
+
+Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
+
+\chapter{Annexes}
+\label{sec:orge05c38b}
+
+\lstset{language=Lisp,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+(setq org-latex-classes
+
+      '(("article" "\\documentclass[11pt]{article}"
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}")
+         ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+
+        ("report" "\\documentclass[11pt]{report}"
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}"))
+
+        ("book" "\\documentclass[11pt]{book}"
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
+\end{lstlisting}
+
+\chapter{Follow Me!}
+\label{sec:orgf88e668}
+
+\begin{itemize}
+\item Groupe Facebook « \textbf{Booster Emacs} » \\
+\url{https://www.facebook.com/groups/286810496172489}
+
+\item Chaîne Youtube « \textbf{Booster Emacs} » \\
+\url{https://www.youtube.com/channel/UChSzlv1RJWFbb7XkV7OREtA?sub\_confirmation=1}
+\end{itemize}
+\end{document}
