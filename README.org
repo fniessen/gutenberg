@@ -17,20 +17,22 @@ La « *programmation litéraire* » (ou /literate programming/, de Knuth) consis
 à écrire la documentation sur le code source (dans l'ordre requis par la
 logique) en même temps et en un même lieu que le code.
 
+- Weave :: *Exporter* le fichier Org en entier comme documentation « tissée »,
+  formatée pour l'homme (généralement en LaTeX ou en HTML)
+
 - Tangle :: *Extraire* les blocs de code source et générer le code « emmêlé »,
   formaté pour la machine (pour compilation ou exécution ultérieure)
 
   Possibilité de changer l'ordre du code source, via l'argument Noweb.
 
-- Weave :: *Exporter* le fichier Org en entier comme documentation « tissée »,
-  formatée pour l'homme (généralement en LaTeX ou en HTML)
+** Exporter le fichier Org
 
-** Exporter le document Org
+- Appeler le menu d'export avec ~C-c C-e~
+- Répéter la dernière commande d'export avec ~C-u C-c C-e~
 
-- C-c C-e
-- Répéter la dernière commande d'export avec C-u C-c C-e
+** Exporter les blocs de code LaTeX (= tangle)
 
-* Exemple de fichier LaTeX                                    :noexport:ARCHIVE:
+*** Déclaration des blocs de code source
 
 #+begin_src latex :exports code
 % Document de classe yathesis
@@ -57,32 +59,22 @@ logique) en même temps et en un même lieu que le code.
 %
 % Production des pages de couverture et de titre
 \maketitle
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Début de la partie liminaire de la thèse
-%
-% l'environnement « abstract »)
-\begin{abstract}
-% ...
-\end{abstract}
-%
-% Production de la page de résumés
-\makeabstract
 
 % (Facultatif) Chapitre de remerciements
 \chapter{Remerciements}
 #+end_src
 
-** Tangle des blocs de code source
+*** Extraction des blocs de code source
 
 Générer le code « emmêlé » :
 
 #+begin_src latex :tangle exemple.sty :exports code :noweb yes
 #+end_src
 
-* Exécution de code (via Org Babel)                           :noexport:ARCHIVE:
+* Exécution de code (Org Babel)                               :noexport:ARCHIVE:
 
-Voici un bout de code qui ajoute 2, puis multiplie par 2 :
+Voici un bout de code Python (~plus-2-fois-2~) qui ajoute 2, puis multiplie par 2;
+d'où son nom :
 
 #+name: plus-2-fois-2
 #+begin_src python :var x=13 :exports both
@@ -91,12 +83,23 @@ resultat = resultat * 2
 return resultat
 #+end_src
 
-Voici un autre bout de code qui multiplie par 3, mais dont seul le résultat
-m'intéresse :
+Voici bout de code Emacs Lisp (~fois-3~) qui multiplie par 3, et dont seul le
+résultat m'intéresse :
 
 #+name: fois-3
 #+begin_src emacs-lisp :exports results :var x=plus-2-fois-2
 (* 3 x)
+#+end_src
+
+Enfin, voici un bout de code en LaTeX qui génère différents résultats, pour
+quelques valeurs possibles de la variable ~x~ passées à ~plus-2-fois-2~ :
+
+#+begin_src latex :exports both :noweb yes
+\begin{itemize}
+\item <<plus-2-fois-2(x=10)>>
+\item <<plus-2-fois-2(x=20)>>
+\item <<plus-2-fois-2(x=30)>>
+\end{itemize}
 #+end_src
 
 * Introduction
@@ -143,7 +146,7 @@ Marci filio, paucis diebus post mortem Africani :
 Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio
 pro consule missae sub iugum factae sunt vectigales.
 
-#+name: tableau
+#+name: mon-tableau
 | Jour     | Frais |
 |----------+-------|
 | Lundi    |     8 |
@@ -184,7 +187,7 @@ ob inopiam vini:
 | /Taxe @ 21%/    |          4.41 | \EUR |
 |---------------+---------------+---|
 | *Montant total* | *\large{25.41}* | *\EUR* |
-#+TBLFM: @1$2=vsum(remote(tableau,@>$>));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*\large{%.2f}*
+#+TBLFM: @1$2=vsum(remote(mon-tableau,@>$>));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*\large{%.2f}*
 
 Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
 
@@ -221,10 +224,13 @@ Code utilisé pour améliorer le rendu de la démonstration :
          ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
 #+end_src
 
-* Follow Me!
+* Suis-moi !
 
-- Groupe Facebook « *Booster Emacs* » \\
+- Rejoins le groupe Facebook \\
+  et la communauté des « *Boosters Emacs* » ici :\\
   https://www.facebook.com/groups/286810496172489
 
-- Chaîne Youtube « *Booster Emacs* » \\
-  https://www.youtube.com/channel/UChSzlv1RJWFbb7XkV7OREtA?sub_confirmation=1
+- Abonne-toi à la chaîne Youtube « *Booster Emacs* » \\
+  https://www.youtube.com/channel/UChSzlv1RJWFbb7XkV7OREtA?sub_confirmation=1 \\
+  et active les notifications en cliquant sur la petite cloche pour ne rien
+  rater !
