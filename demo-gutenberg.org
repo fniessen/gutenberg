@@ -190,6 +190,12 @@ Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
 
 * Annexes
 
+Code utilisé pour améliorer le rendu de la démonstration :
+
+#+begin_src emacs-lisp :exports code
+(set-frame-font "Consolas-13" nil t)
+#+end_src
+
 #+begin_src emacs-lisp :exports code
 (setq org-latex-classes
 
