@@ -7,9 +7,21 @@
 #+OPTIONS:   H:4 num:t toc:nil
 
 #+LaTeX_CLASS: report
-#+LaTeX_HEADER: \input{fichier-config-listings}
+#+LaTeX_CLASS_OPTIONS: [french]
+#+LaTeX_HEADER: \input{config-listings}
 #+PROPERTY:  header-args :eval always
 # #+SETUPFILE: ~/org/theme-bigblow.setup
+
+Ceci est un document Org.
+
+*Org mode* est (entre autres) une syntaxe /plain text/ facile à utiliser pour
+rédiger des documents LaTeX documents, créer des pages Web et encore plein
+d'autres choses !
+
+*Org mode* is a easy-to-write /plain text/ formatting syntax for authoring LaTeX
+documents, creating Web pages and much more!
+
+[[file:~/tests/org-mode-syntax-example.org]]
 
 * Documentation logicielle                                    :noexport:ARCHIVE:
 
@@ -196,7 +208,20 @@ Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
 Code utilisé pour améliorer le rendu de la démonstration :
 
 #+begin_src emacs-lisp :exports code
-(set-frame-font "Consolas-13" nil t)
+(set-frame-font "Consolas-11" nil t)
+#+end_src
+
+#+begin_src emacs-lisp :exports code
+(setq org-latex-default-packages-alist
+      '(("AUTO" "inputenc" t
+         ("pdflatex"))
+        ("T1" "fontenc" t
+         ("pdflatex"))
+        (#1="" "graphicx" t)
+        ("" "xcolor")
+        ("" "babel")
+        ("" "listings")
+        (#1# "hyperref" nil))
 #+end_src
 
 #+begin_src emacs-lisp :exports code

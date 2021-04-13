@@ -1,5 +1,5 @@
 % Intended LaTeX compiler: pdflatex
-\documentclass[11pt]{report}
+\documentclass[french]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -16,7 +16,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage[french]{babel}
-\input{fichier-config-listings}
+\input{config-listings}
 \author{Fabrice Niessen}
 \date{\today}
 \title{Literate programming avec Org mode}
@@ -30,9 +30,19 @@
 \begin{document}
 
 \maketitle
+Ceci est un document Org.
+
+\textbf{Org mode} est (entre autres) une syntaxe \emph{plain text} facile à utiliser pour
+rédiger des documents \LaTeX{} documents, créer des pages Web et encore plein
+d'autres choses !
+
+\textbf{Org mode} is a easy-to-write \emph{plain text} formatting syntax for authoring \LaTeX{}
+documents, creating Web pages and much more!
+
+\url{file:///cygdrive/d/Users/fni/tests/org-mode-syntax-example.org}
 
 \chapter{Introduction}
-\label{sec:org318ee9f}
+\label{sec:org0980ec2}
 
 Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi
 ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae
@@ -44,14 +54,14 @@ laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum
 inpendentium exprimebat.
 
 \chapter{Équipements et tests}
-\label{sec:org3c575ab}
+\label{sec:org0c6e83b}
 
 Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis
 confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam
 inductus est ut appellant Christiani diaconus.
 
 \section{Équipements utilisés}
-\label{sec:org9815864}
+\label{sec:org76a1d28}
 
 Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur,
 Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque
@@ -66,7 +76,7 @@ minutis, quam mediam navigabile flumen Calycadnus interscindit :
 \end{itemize}
 
 \section{Conditions de tests}
-\label{sec:org81f50a9}
+\label{sec:orgc02e45d}
 
 Itaque tum Scaevola cum in eam ipsam mentionem incidisset, exposuit nobis
 sermonem Laeli de amicitia habitum ab illo secum et cum altero genero, C. Fannio
@@ -79,13 +89,13 @@ Marci filio, paucis diebus post mortem Africani :
 \end{enumerate}
 
 \chapter{Résultats et discussion}
-\label{sec:org21d8235}
+\label{sec:org0243216}
 
 Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio
 pro consule missae sub iugum factae sunt vectigales.
 
 \begin{table}[!htbp]
-\label{tab:orgd309d53}
+\label{tab:org0c46daf}
 \centering
 \begin{tabular}{lr}
 Jour & Frais\\
@@ -105,21 +115,21 @@ Total & 21\\
 Quid?
 
 \section{Résultats}
-\label{sec:orgbe6c56d}
+\label{sec:org45d157b}
 
 Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos
 sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices
 venerint summos.
 
 \section{Discussion}
-\label{sec:orgbacc30f}
+\label{sec:org7c64c77}
 
 Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati
 ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque
 Spoletium pergunt.
 
 \chapter{Conclusions}
-\label{sec:org0b1d29a}
+\label{sec:org7776d8a}
 
 Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum
 delatae dignitatis sese efferens insolenter, vir quidem prudens et forensium
@@ -140,13 +150,27 @@ ob inopiam vini:
 Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
 
 \chapter{Annexes}
-\label{sec:org1b89089}
+\label{sec:orga31b3e4}
 
 Code utilisé pour améliorer le rendu de la démonstration :
 
 \lstset{language=Lisp,label= ,caption= ,captionpos=b,numbers=none}
 \begin{lstlisting}
-(set-frame-font "Consolas-13" nil t)
+(set-frame-font "Consolas-11" nil t)
+\end{lstlisting}
+
+\lstset{language=Lisp,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+(setq org-latex-default-packages-alist
+      '(("AUTO" "inputenc" t
+         ("pdflatex"))
+        ("T1" "fontenc" t
+         ("pdflatex"))
+        (#1="" "graphicx" t)
+        ("" "xcolor")
+        ("" "babel")
+        ("" "listings")
+        (#1# "hyperref" nil))
 \end{lstlisting}
 
 \lstset{language=Lisp,label= ,caption= ,captionpos=b,numbers=none}
@@ -176,7 +200,7 @@ Code utilisé pour améliorer le rendu de la démonstration :
 \end{lstlisting}
 
 \chapter{Suis-moi !}
-\label{sec:org83535ea}
+\label{sec:orgcd75b43}
 
 \begin{itemize}
 \item Rejoins le groupe Facebook \\
