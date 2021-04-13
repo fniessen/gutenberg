@@ -4,24 +4,20 @@
 #+DESCRIPTION: Fichier de démo pour la conférence GUTenberg 2021
 #+KEYWORDS:  gutenberg, emacs, org-mode, latex, booster
 #+LANGUAGE:  fr
-#+OPTIONS:   H:4 num:t toc:nil
+#+OPTIONS:   num:t toc:nil
 
 #+LaTeX_CLASS: report
 #+LaTeX_CLASS_OPTIONS: [french]
 #+LaTeX_HEADER: \input{config-listings}
+
 #+PROPERTY:  header-args :eval always
 # #+SETUPFILE: ~/org/theme-bigblow.setup
 
 Ceci est un document Org.
 
 *Org mode* est (entre autres) une syntaxe /plain text/ facile à utiliser pour
-rédiger des documents LaTeX documents, créer des pages Web et encore plein
-d'autres choses !
-
-*Org mode* is a easy-to-write /plain text/ formatting syntax for authoring LaTeX
-documents, creating Web pages and much more!
-
-[[file:~/tests/org-mode-syntax-example.org]]
+rédiger des documents LaTeX, créer des pages Web, des documents LibreOffice et
+encore plein d'autres choses !
 
 * Documentation logicielle                                    :noexport:ARCHIVE:
 
@@ -32,7 +28,7 @@ logique) en même temps et en un même lieu que le code.
 - Weave :: *Exporter* le fichier Org en entier comme documentation « tissée »,
   formatée pour l'homme (généralement en LaTeX ou en HTML)
 
-- Tangle :: *Extraire* les blocs de code source et générer le code « emmêlé »,
+- Tangle :: *Extraire* les blocs de code source et générer le code « entrelacé »,
   formaté pour la machine (pour compilation ou exécution ultérieure)
 
   Possibilité de changer l'ordre du code source, via l'argument Noweb.
@@ -78,7 +74,7 @@ logique) en même temps et en un même lieu que le code.
 
 *** Extraction des blocs de code source
 
-Générer le code « emmêlé » :
+Générer le code « entrelacé » :
 
 #+begin_src latex :tangle exemple.sty :exports code :noweb yes
 #+end_src
@@ -205,10 +201,12 @@ Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
 
 * Annexes
 
+** Code Emacs Lisp
+
 Code utilisé pour améliorer le rendu de la démonstration :
 
 #+begin_src emacs-lisp :exports code
-(set-frame-font "Consolas-11" nil t)
+(set-frame-font "Consolas-13" nil t)
 #+end_src
 
 #+begin_src emacs-lisp :exports code
@@ -248,6 +246,11 @@ Code utilisé pour améliorer le rendu de la démonstration :
          ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
          ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
 #+end_src
+
+** Plus d'informations
+
+- Fichier d'exemple de la syntaxe Org mode :
+  https://github.com/fniessen/org-html-themes/tests/org-mode-syntax-example.org
 
 * Suis-moi !
 
