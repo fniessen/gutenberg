@@ -1,20 +1,9 @@
-%% mccommon.sty -- LaTeX2e MC common commands and environments
+%% fichier-config-listings.tex -- LaTeX2e My common commands and environments
 %
-% Copyright (C) 2008-2014 Fabrice Niessen
-
-%* --[ Identification --------------------------------------------------------
-
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mccommon}[2021/04/07 v1.0 MCit Common stuff between documents and presentations]
-
-\RequirePackage[iso]{datetime}
+% Copyright (C) 2008-2021 Fabrice Niessen
 
 %* --[ Listings --------------------------------------------------------------
 
-% typeset source code listings
-\RequirePackage{listings}
-
-\RequirePackage{xcolor}
 \definecolor{mc@lstidentifier}{HTML}{000000} % black
 \definecolor{mc@lstcomment}{HTML}{008200} % green
 \definecolor{mc@lststring}{HTML}{FF5500} % orange
@@ -22,59 +11,11 @@
 \definecolor{mc@lstbackground}{HTML}{FFFFCC} % light yellow
 \definecolor{mc@lstframe}{HTML}{FFEE88} % dark yellow
 
-\lstdefinelanguage{fundamental}{}
-
-\lstdefinelanguage{conf}{}
-
-\lstdefinelanguage{dot}{%
-  morekeywords={graph},
-  sensitive=false,
-}
-
-\lstdefinelanguage{ebnf}{}
-
-\lstdefinelanguage{makefile}{}
-
-\lstdefinelanguage{Mercury}{}
-
-\lstdefinelanguage{sparql}{}
-
 \lstdefinelanguage{org}{%
   morekeywords={:results, :session, :var, :noweb, :exports},
   sensitive=false,
   morestring=[b]",
   morecomment=[l]{\#},
-}
-
-\lstalias{shell}{sh}
-
-\lstdefinelanguage{sword}{%
-  morekeywords=[1]{ontology, import, as},
-  morekeywords=[2]{rule, if, then, and, is, a, function, of},
-  morekeywords=[3]{class, with, range},
-  sensitive=true,
-  otherkeywords={[, ], (, ), \\=,.},
-  %
-  morestring=[b]",
-  %
-  morecomment=[l]{\#},
-  %
-  identifierstyle=\color[rgb]{0,0,0},
-  commentstyle=\itshape\color[rgb]{0.938,0,0},
-  stringstyle=\color[rgb]{0.133,0.545,0.133},
-  %  keywordstyle=\color[rgb]{1.0,0,0},
-  keywordstyle=[1]\color{cyan},
-  keywordstyle=[2]\color[rgb]{0,0,0.75},
-  keywordstyle=[3]\color[rgb]{0.127,0.427,0.514},
-  %  keywordstyle=[4]\color[rgb]{0.4,0.4,0.4},
-  alsoletter={?},
-  keywordsprefix=?,
-  delim=[s][\color{magenta}]{:}{(},
-  moredelim=[s][\color{magenta}]{:}{.},
-  moredelim=[s][\color{magenta}]{:}{,},
-  moredelim=[s][\color{magenta}]{:}{^^J},
-  moredelim=[s][\color{magenta}]{:}{\ },
-  moredelim=[l][\color{black}]{:}{/},
 }
 
 % a new language must be defined before being loaded: hence, put
@@ -85,6 +26,7 @@
   %XML,
   %HTML,
   Java,
+  Python,
   R,
   sword
 }
@@ -178,15 +120,9 @@
   {Ü}{{\"U}}1
 }
 
-%% End of package
-\endinput % very last line
-
 % This is for the sake of Emacs.
 % Local Variables:
 % ispell-local-dictionary: "american"
-% time-stamp-format: "%:y/%02m/%02d"
-% time-stamp-start: "Provides\\(Class\\|Package\\){[a-zA-Z-]+}\\["
-% time-stamp-end: " "
 % End:
 
-%% mccommon.sty ends here
+%% fichier-config-listings.tex ends here
