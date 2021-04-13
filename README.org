@@ -6,8 +6,8 @@
 #+LANGUAGE:  fr
 #+OPTIONS:   H:4 num:t toc:nil
 
-#+LATEX_CLASS: report
-#+LaTeX: \input{fichier-config-listings}
+#+LaTeX_CLASS: report
+#+LaTeX_HEADER: \input{fichier-config-listings}
 #+PROPERTY:  header-args :eval always
 # #+SETUPFILE: ~/org/theme-bigblow.setup
 
@@ -227,7 +227,7 @@ Code utilisé pour améliorer le rendu de la démonstration :
 * Suis-moi !
 
 - Rejoins le groupe Facebook \\
-  et la communauté des « *Boosters Emacs* » ici :\\
+  et la communauté des « *Boosters Emacs* » ici : \\
   https://www.facebook.com/groups/286810496172489
 
 - Abonne-toi à la chaîne Youtube « *Booster Emacs* » \\
