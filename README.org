@@ -215,11 +215,13 @@ Code utilisé pour améliorer le rendu de la démonstration :
          ("pdflatex"))
         ("T1" "fontenc" t
          ("pdflatex"))
-        (#1="" "graphicx" t)
+        ("" "graphicx" t)
         ("" "xcolor")
         ("" "babel")
         ("" "listings")
-        (#1# "hyperref" nil))
+        ("" "hyperref" nil)))
+
+(setq org-latex-packages-alist nil)
 #+end_src
 
 #+begin_src emacs-lisp :exports code

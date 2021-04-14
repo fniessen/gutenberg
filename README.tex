@@ -3,19 +3,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage{grffile}
-\usepackage{longtable}
-\usepackage{wrapfig}
-\usepackage{rotating}
-\usepackage[normalem]{ulem}
-\usepackage{amsmath}
-\usepackage{textcomp}
-\usepackage{amssymb}
-\usepackage{capt-of}
-\usepackage{hyperref}
-\usepackage{listings}
 \usepackage{xcolor}
-\usepackage[french]{babel}
+\usepackage{babel}
+\usepackage{listings}
+\usepackage{hyperref}
 \input{config-listings}
 \author{Fabrice Niessen}
 \date{\today}
@@ -37,7 +28,7 @@ rédiger des documents \LaTeX{}, créer des pages Web, des documents LibreOffice
 encore plein d'autres choses !
 
 \chapter{Introduction}
-\label{sec:org936a102}
+\label{sec:orgf6d79f1}
 
 Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi
 ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae
@@ -49,14 +40,14 @@ laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum
 inpendentium exprimebat.
 
 \chapter{Équipements et tests}
-\label{sec:org4895531}
+\label{sec:org348222d}
 
 Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis
 confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam
 inductus est ut appellant Christiani diaconus.
 
 \section{Équipements utilisés}
-\label{sec:orgb58710e}
+\label{sec:org7016ef5}
 
 Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur,
 Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque
@@ -71,7 +62,7 @@ minutis, quam mediam navigabile flumen Calycadnus interscindit :
 \end{itemize}
 
 \section{Conditions de tests}
-\label{sec:org201572a}
+\label{sec:org47471ce}
 
 Itaque tum Scaevola cum in eam ipsam mentionem incidisset, exposuit nobis
 sermonem Laeli de amicitia habitum ab illo secum et cum altero genero, C. Fannio
@@ -84,13 +75,13 @@ Marci filio, paucis diebus post mortem Africani :
 \end{enumerate}
 
 \chapter{Résultats et discussion}
-\label{sec:org39aaf74}
+\label{sec:org158955c}
 
 Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio
 pro consule missae sub iugum factae sunt vectigales.
 
 \begin{table}[!htbp]
-\label{tab:orgef9b90e}
+\label{tab:orge1f5ce1}
 \centering
 \begin{tabular}{lr}
 Jour & Frais\\
@@ -110,21 +101,21 @@ Total & 21\\
 Quid?
 
 \section{Résultats}
-\label{sec:org1ed3e58}
+\label{sec:org3a8b437}
 
 Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos
 sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices
 venerint summos.
 
 \section{Discussion}
-\label{sec:org39d6f06}
+\label{sec:org91f01d3}
 
 Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati
 ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque
 Spoletium pergunt.
 
 \chapter{Conclusions}
-\label{sec:org12e36a3}
+\label{sec:orgd3286c0}
 
 Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum
 delatae dignitatis sese efferens insolenter, vir quidem prudens et forensium
@@ -145,10 +136,10 @@ ob inopiam vini:
 Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
 
 \chapter{Annexes}
-\label{sec:org10e78cd}
+\label{sec:org039abaa}
 
 \section{Code Emacs Lisp}
-\label{sec:org80d03c4}
+\label{sec:orgda9f978}
 
 Code utilisé pour améliorer le rendu de la démonstration :
 
@@ -164,11 +155,13 @@ Code utilisé pour améliorer le rendu de la démonstration :
          ("pdflatex"))
         ("T1" "fontenc" t
          ("pdflatex"))
-        (#1="" "graphicx" t)
+        ("" "graphicx" t)
         ("" "xcolor")
         ("" "babel")
         ("" "listings")
-        (#1# "hyperref" nil))
+        ("" "hyperref" nil)))
+
+(setq org-latex-packages-alist nil)
 \end{lstlisting}
 
 \lstset{language=Lisp,label= ,caption= ,captionpos=b,numbers=none}
@@ -198,7 +191,7 @@ Code utilisé pour améliorer le rendu de la démonstration :
 \end{lstlisting}
 
 \section{Plus d'informations}
-\label{sec:orgc0ed265}
+\label{sec:org2674345}
 
 \begin{itemize}
 \item Fichier d'exemple de la syntaxe Org mode :
@@ -206,7 +199,7 @@ Code utilisé pour améliorer le rendu de la démonstration :
 \end{itemize}
 
 \chapter{Suis-moi !}
-\label{sec:org3fcac63}
+\label{sec:org497fb0f}
 
 \begin{itemize}
 \item Rejoins le groupe Facebook \\
