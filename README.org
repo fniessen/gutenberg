@@ -13,15 +13,16 @@
 #+PROPERTY:  header-args :eval always
 # #+SETUPFILE: ~/org/theme-bigblow.setup
 
-Ceci est un document Org.
+Pour information, ce document Org est disponible sur
+https://github.com/fniessen/gutenberg.
 
-*Org mode* est (entre autres) une syntaxe /plain text/ facile à utiliser pour
-rédiger des documents LaTeX, créer des pages Web, des documents LibreOffice et
-encore plein d'autres choses !
+*Org mode* est une « fonctionnalité » d'Emacs offrant (entre autres) une syntaxe
+/plain text/ facile à utiliser pour exporter des documents en LaTeX, en HTML, en
+documents LibreOffice -- et encore plein d'autres choses !
 
 * Documentation logicielle                                    :noexport:ARCHIVE:
 
-La « *programmation litéraire* » (ou /literate programming/, de Knuth) consiste
+La « *programmation littéraire* » (ou /literate programming/, de Knuth) consiste
 à écrire la documentation sur le code source (dans l'ordre requis par la
 logique) en même temps et en un même lieu que le code.
 
@@ -33,7 +34,7 @@ logique) en même temps et en un même lieu que le code.
 
   Possibilité de changer l'ordre du code source, via l'argument Noweb.
 
-** Exporter le fichier Org
+** Exporter le fichier Org (= weave)
 
 - Appeler le menu d'export avec ~C-c C-e~
 - Répéter la dernière commande d'export avec ~C-u C-c C-e~
@@ -166,7 +167,7 @@ pro consule missae sub iugum factae sunt vectigales.
 | Dimanche |     0 |
 |----------+-------|
 | Total    |    21 |
-#+TBLFM: @9$2=vsum(@I..@-I)
+#+TBLFM: @>$2=vsum(@I..@-I)
 
 Quid?
 
@@ -190,12 +191,12 @@ negotiorum oppido gnarus, sed splendore liberalium doctrinarum minus quam
 nobilem decuerat institutus, quo administrante seditiones sunt concitatae graves
 ob inopiam vini:
 
-| /Sous-total/    |         21.00 | \EUR |
-|---------------+---------------+---|
-| /Taxe @ 21%/    |          4.41 | \EUR |
-|---------------+---------------+---|
-| *Montant total* | *\large{25.41}* | *\EUR* |
-#+TBLFM: @1$2=vsum(remote(mon-tableau,@>$>));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*\large{%.2f}*
+| /Sous-total/    |          21.00 | \EUR   |
+|-----------------+----------------+-----|
+| /Taxe @ 20%/    |           4.41 | \EUR   |
+|-----------------+----------------+-----|
+| *Montant total* | *\large 25.41* | *\EUR* |
+#+TBLFM: @1$2=vsum(remote(mon-tableau,@>$>));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*\large %.2f*
 
 Huius avidis usibus vulgus intentum ad motus asperos excitatur et crebros.
 
@@ -253,6 +254,9 @@ Code utilisé pour améliorer le rendu de la démonstration :
 
 - Fichier d'exemple de la syntaxe Org mode :
   https://github.com/fniessen/org-html-themes/tests/org-mode-syntax-example.org
+
+- Ma configuration Emacs :
+  https://github.com/fniessen/emacs-leuven
 
 * Suis-moi !
 
