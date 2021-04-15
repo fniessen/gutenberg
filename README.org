@@ -20,11 +20,38 @@ https://github.com/fniessen/gutenberg.
 /plain text/ facile à utiliser pour exporter des documents en LaTeX, en HTML, en
 documents LibreOffice -- et encore plein d'autres choses !
 
-* Documentation logicielle                                    :noexport:ARCHIVE:
+* TODO Tasks
 
-La « *programmation littéraire* » (ou /literate programming/, de Knuth) consiste
+- Buffer local var for size
+- Program pour afficher les touches tapées
+- Export ODT
+
+* Documentation logicielle (Org Babel)                        :noexport:ARCHIVE:
+
+La « *programmation lettrée* » (ou /literate programming/, de Knuth) consiste
 à écrire la documentation sur le code source (dans l'ordre requis par la
 logique) en même temps et en un même lieu que le code.
+
+#+begin_verse
+Je crois que le temps est venu pour une amélioration significative de la
+documentation des programmes, et que le meilleur moyen d'y arriver est de
+considérer les programmes comme des oeuvres littéraires. D'où mon titre,
+« programmation lettrée ».
+
+Nous devons changer notre attitude traditionnelle envers la construction des
+programmes : au lieu de considérer que notre tâche principale est de dire à un
+ordinateur ce qu'il doit faire, appliquons-nous plutôt à expliquer à des êtres
+humains ce que nous voulons que l'ordinateur fasse.
+
+Celui qui pratique la programmation lettrée peut être vu comme un essayiste, qui
+s'attache principalement à exposer son sujet dans un style visant
+à l'excellence. Tel un auteur, il choisit , avec soin, le dictionnaire à la
+main, les noms de ses variables et en explique la signification pour chacune
+d'elles. Il cherche donc à obtenir un programme compréhensible parce que ses
+concepts sont présentés dans le meilleur ordre possible.
+#+end_verse
+
+2 concepts sont à distinguer :
 
 - Weave :: *Exporter* le fichier Org en entier comme documentation « tissée »,
   formatée pour l'homme (généralement en LaTeX ou en HTML)
@@ -73,14 +100,17 @@ logique) en même temps et en un même lieu que le code.
 \chapter{Remerciements}
 #+end_src
 
+Notez que, pour déclarer le titre du document, l'on utilise la syntaxe
+~\title{...}~ où les =...= sont l'intitulé du chapitre.
+
 *** Extraction des blocs de code source
 
 Générer le code « entrelacé » :
 
-#+begin_src latex :tangle exemple.sty :exports code :noweb yes
+#+begin_src latex :tangle exemple.tex :exports code :noweb yes
 #+end_src
 
-* Exécution de code (Org Babel)                               :noexport:ARCHIVE:
+* Exécution de code
 
 Voici un bout de code Python (~plus-2-fois-2~) qui ajoute 2, puis multiplie par 2;
 d'où son nom :
@@ -100,7 +130,7 @@ résultat m'intéresse :
 (* 3 x)
 #+end_src
 
-Enfin, voici un bout de code en LaTeX qui génère différents résultats, pour
+Ensuite, voici un bout de code en LaTeX qui génère différents résultats, pour
 quelques valeurs possibles de la variable ~x~ passées à ~plus-2-fois-2~ :
 
 #+begin_src latex :exports both :noweb yes
@@ -109,6 +139,12 @@ quelques valeurs possibles de la variable ~x~ passées à ~plus-2-fois-2~ :
 \item <<plus-2-fois-2(x=20)>>
 \item <<plus-2-fois-2(x=30)>>
 \end{itemize}
+#+end_src
+
+Et, finalement, un graphique produit en langage R.
+
+#+begin_src R :results output graphics file :file testout.png :eval yes
+plot(1:10, (1:10)^2)
 #+end_src
 
 * Introduction
@@ -226,6 +262,13 @@ Code utilisé pour améliorer le rendu de la démonstration :
 #+end_src
 
 #+begin_src emacs-lisp :exports code
+(setq org-latex-text-markup-alist '((bold . "\\textbf{%s}")
+                                    (code . "\\lstinline|%s|")
+                                    (italic . "\\emph{%s}")
+                                    (strike-through . "\\sout{%s}")
+                                    (underline . "\\uline{%s}")
+                                    (verbatim . "\\verb|%s|")))
+
 (setq org-latex-classes
 
       '(("article" "\\documentclass[11pt]{article}"
@@ -257,6 +300,9 @@ Code utilisé pour améliorer le rendu de la démonstration :
 
 - Ma configuration Emacs :
   https://github.com/fniessen/emacs-leuven
+
+- « Reference card » Org Babel :
+  https://github.com/fniessen/refcard-org-babel
 
 * Suis-moi !
 
