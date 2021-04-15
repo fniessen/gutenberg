@@ -108,7 +108,7 @@ Générer le code « entrelacé » :
 #+begin_src latex :tangle exemple.tex :exports code :noweb yes
 #+end_src
 
-* Exécution de code
+* Exécution de code                                           :noexport:ARCHIVE:
 
 Voici un bout de code Python (~plus-2-fois-2~) qui ajoute 2, puis multiplie par 2;
 d'où son nom :
