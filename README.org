@@ -71,14 +71,13 @@ concepts sont présentés dans le meilleur ordre possible.
 *** Déclaration des blocs de code source
 
 #+begin_src latex :exports code
-% Document de classe yathesis
-\documentclass{yathesis}
-%
-% Chargement manuel de packages (pas chargés par la classe yathesis)
+% Document de classe report
+\documentclass[french]{report}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{siunitx}
-\usepackage[nospace]{varioref}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\usepackage{babel}
 \usepackage{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,16 +87,15 @@ concepts sont présentés dans le meilleur ordre possible.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Caractéristiques du document
 %
-% Préparation des pages de couverture et de titre
-\author[]{}{}
-\title[]{}
-\date{}{}{}
+\author{}
+\title{}
+\date{}
 %
-% Production des pages de couverture et de titre
+% Production du titre
 \maketitle
 
-% (Facultatif) Chapitre de remerciements
-\chapter{Remerciements}
+% Un chapitre
+\chapter{}
 #+end_src
 
 Notez que, pour déclarer le titre du document, l'on utilise la syntaxe
@@ -227,10 +225,10 @@ negotiorum oppido gnarus, sed splendore liberalium doctrinarum minus quam
 nobilem decuerat institutus, quo administrante seditiones sunt concitatae graves
 ob inopiam vini:
 
-| /Sous-total/    |          21.00 | \EUR   |
-|-----------------+----------------+-----|
-| /Taxe @ 20%/    |           4.41 | \EUR   |
-|-----------------+----------------+-----|
+| /Sous-total/    |        21.00 | \EUR |
+|---------------+--------------+---|
+| /Taxe @ 20%/    |         4.41 | \EUR |
+|---------------+--------------+---|
 | *Montant total* | *\large 25.41* | *\EUR* |
 #+TBLFM: @1$2=vsum(remote(mon-tableau,@>$>));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*\large %.2f*
 
