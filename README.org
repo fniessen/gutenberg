@@ -20,12 +20,6 @@ https://github.com/fniessen/gutenberg.
 /plain text/ facile à utiliser pour exporter des documents en LaTeX, en HTML, en
 documents LibreOffice -- et encore plein d'autres choses !
 
-* TODO Tasks
-
-- Buffer local var for size
-- Program pour afficher les touches tapées
-- Export ODT
-
 * Documentation logicielle (Org Babel)                        :noexport:ARCHIVE:
 
 La « *programmation lettrée* » (ou /literate programming/, de Knuth) consiste
