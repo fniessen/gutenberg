@@ -11,7 +11,7 @@
 #+LaTeX_HEADER: \input{config-listings}
 
 #+PROPERTY:  header-args :eval always
-# #+SETUPFILE: ~/org/theme-bigblow.setup
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 Pour information, ce document Org est disponible sur
 https://github.com/fniessen/gutenberg.
@@ -285,6 +285,11 @@ Code utilisé pour améliorer le rendu de la démonstration :
          ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
 #+end_src
 
+#+begin_src emacs-lisp :exports code
+;; Export source code using `listings' (instead of `verbatim').
+(setq org-latex-listings t)
+#+end_src
+
 ** Plus d'informations
 
 - Fichier d'exemple de la syntaxe Org mode :
@@ -306,3 +311,9 @@ Code utilisé pour améliorer le rendu de la démonstration :
   https://www.youtube.com/channel/UChSzlv1RJWFbb7XkV7OREtA?sub_confirmation=1 \\
   et active les notifications en cliquant sur la petite cloche pour ne rien
   rater !
+
+# This is for the sake of Emacs.
+# Local Variables:
+# org-latex-listings: t
+# eval: (set-frame-font "Consolas-13" nil t)
+# End:
