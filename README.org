@@ -290,6 +290,14 @@ Code utilisé pour améliorer le rendu de la démonstration :
 (setq org-latex-listings t)
 #+end_src
 
+#+begin_src emacs-lisp :exports code
+;; Configure Babel to support languages from this file.
+(add-to-list 'org-babel-load-languages '(R          . t)) ; Requires R and ess-mode.
+(add-to-list 'org-babel-load-languages '(emacs-lisp . t))
+(add-to-list 'org-babel-load-languages '(latex      . t)) ; Shouldn't you use #+begin/end_latex blocks instead?
+(add-to-list 'org-babel-load-languages '(python     . t))
+#+end_src
+
 ** Plus d'informations
 
 - Fichier d'exemple de la syntaxe Org mode :
